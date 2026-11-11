@@ -1,6 +1,6 @@
 # Device Memory
 
-For the Working Draft, see https://www.w3.org/TR/device-memory/
+For the latest draft, see https://wicg.github.io/device-memory/
 
 ## Motivation & Use cases
 A “one-size-fits-all” web experience does not work in a world with widely varying device capabilities. Web apps that delight users on high end devices can be unusable on low end devices, particularly in emerging markets.

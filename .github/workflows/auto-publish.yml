@@ -1,0 +1,17 @@
+name: Automatic publication to GitHub Pages
+on:
+  pull_request: {}
+  push:
+    branches: [main]
+jobs:
+  validate-and-publish:
+    name: Validate and publish to gh-pages branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: w3c/spec-prod@v2
+        with:
+          TOOLCHAIN: bikeshed
+          GH_PAGES_BRANCH: gh-pages
