@@ -6,7 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
   <meta content="Bikeshed version e0b165ae4, updated Mon Nov 2 15:16:49 2026 -0800" name="generator">
   <link href="https://wicg.github.io/device-memory/" rel="canonical">
-  <meta content="7a387cfe743c48f85ba46d96eb95c39a13ac7ee6" name="revision">
+  <meta content="ff84f8d8b481fbaef8211432802b675decc7a1b6" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -974,17 +974,17 @@ It is a <a data-link-type="dfn" data-refhint-key="c5980d7b" href="https://datatr
 <c- p>}</c->
 </pre>
    </div>
-   <div class="example" id="example-a6af2730">
-    <a class="self-link" href="#example-a6af2730"></a>
+   <div class="example" id="example-e2aea848">
+    <a class="self-link" href="#example-e2aea848"></a>
     A RUM solution can query the device memory using <code class="highlight">navigator<c- p>.</c->deviceMemory</code> API and include this in performance beacons as additional information to help explain or segment the data.
 
     
 <pre class="highlight language-javascript"><c- a>const</c-> mem <c- o>=</c-> navigator<c- p>.</c->deviceMemory<c- p>;</c->
 <c- a>const</c-> analyticsData <c- o>=</c-> <c- p>{</c->
-    memory<c- o>:</c-> mem<c- p>;</c->
-    <c- p>...</c-> other metrics
-<c- p>}</c->
-navigator<c- p>.</c->sendBeacon<c- p>(</c-><c- u>"/endpoint"</c-><c- p>,</c-> analyticsData<c- p>);</c->
+    memory<c- o>:</c-> mem<c- p>,</c->
+    <c- c1>// Add other metrics here.</c->
+<c- p>};</c->
+navigator<c- p>.</c->sendBeacon<c- p>(</c-><c- u>"/endpoint"</c-><c- p>,</c-> JSON<c- p>.</c->stringify<c- p>(</c->analyticsData<c- p>));</c->
 </pre>
    </div>
    <h2 class="heading settled" data-level="5" id="security-and-privacy"><span class="secno">5. </span><span class="content">Security &amp; privacy considerations</span><a class="self-link" href="#security-and-privacy"></a></h2>
