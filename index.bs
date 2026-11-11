@@ -48,20 +48,17 @@ This specification defines a [(Client Hint) Header Field](#sec-device-memory-cli
     The [=user agent=]'s <dfn>deviceMemory</dfn> is calculated by these steps:
 
     1.  Let |physicalDeviceMemory| be the amount of physical memory in bytes.
-    2.  Let |minimumLowerBound| be an [=implementation-defined=] minimum bound.
-    3.  Let |maximumUpperBound| be an [=implementation-defined=] maximum bound.
-    4.  Let |deviceMemory| be |physicalDeviceMemory| / 1024.0.
-    5.  Let |power| be 0.
-    6.  [=iteration/While=] |deviceMemory| is greater than 1:
-            1.  Bitwise shift |deviceMemory| right 1 place.
-            2.  Increment |power| by 1.
-    7.  Let |lowerBound| be 2 to the power of |power|.
-    8.  Let |upperBound| be 2 to the power of |power + 1|.
-    9.  If |physicalDeviceMemory| − |lowerBound| &le; |upperBound| − |physicalDeviceMemory|, then |deviceMemory|'s value is |lowerBound|.
-    10.  Otherwise |deviceMemory|'s value is |upperBound|.
-    11.  If |deviceMemory| < |minimumLowerBound|, then |deviceMemory| is |minimumLowerBound|.
-    12.  If |deviceMemory| > |maximumUpperBound|, then |deviceMemory| is |maximumUpperBound|.
-    13.  Return |deviceMemory|.
+    2.  Let |minimumLowerBound| be an [=implementation-defined=] minimum bound in GiB.
+    3.  Let |maximumUpperBound| be an [=implementation-defined=] maximum bound in GiB.
+    4.  Let |lowerBound| be 1 byte.
+    5.  [=iteration/While=] 2 × |lowerBound| is less than or equal to |physicalDeviceMemory|:
+            1.  Set |lowerBound| to 2 × |lowerBound|.
+    6.  Let |upperBound| be 2 × |lowerBound|.
+    7.  Let |roundedMemory| be |lowerBound| if |physicalDeviceMemory| − |lowerBound| &le; |upperBound| − |physicalDeviceMemory|, or |upperBound| otherwise.
+    8.  Let |deviceMemory| be |roundedMemory| / 1073741824.
+    9.  If |deviceMemory| < |minimumLowerBound|, then |deviceMemory| is |minimumLowerBound|.
+    10. If |deviceMemory| > |maximumUpperBound|, then |deviceMemory| is |maximumUpperBound|.
+    11. Return |deviceMemory|.
 </div>
 
 The algorithm includes the ability for [=implementation-defined=] upper bound and a lower bounds. The range between the upper and the lower bounds should include the majority of device memory values but exclude rare device memory values to mitigate device fingerprinting. Implementations may adjust these bounds over time. These bounds may differ on different device types.
