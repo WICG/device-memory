@@ -145,10 +145,10 @@ The {{NavigatorDeviceMemory}}'s {{NavigatorDeviceMemory/deviceMemory}} getter st
     ```javascript
         const mem = navigator.deviceMemory;
         const analyticsData = {
-            memory: mem;
-            ... other metrics
-        }
-        navigator.sendBeacon("/endpoint", analyticsData);
+            memory: mem,
+            // Add other metrics here.
+        };
+        navigator.sendBeacon("/endpoint", JSON.stringify(analyticsData));
     ```
 </div>
 
