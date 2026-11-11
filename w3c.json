@@ -1,8 +1,8 @@
 {
-  "group": 45211,
+  "group": "cg/wicg",
   "contacts": [
-    "plehegar"
+    "tunetheweb",
+    "guohuideng2024"
   ],
-  "shortName": "device-memory",
-  "repo-type": "rec-track"
+  "repo-type": "cg-report"
 }
